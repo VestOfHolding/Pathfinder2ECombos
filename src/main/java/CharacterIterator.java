@@ -74,4 +74,12 @@ public class CharacterIterator {
             }
         }
     }
+
+    public void printCharacterCombos() {
+        String output = String.join("\t", character.getAncestry().getDisplayName(),
+                character.getBackground().getDisplayName(),
+                character.getPfClass().getDisplayName(),
+                Integer.toString(countPossibleAbilityArrays()));
+        System.out.println(output);
+    }
 }
