@@ -1,4 +1,5 @@
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 import java.util.Set;
@@ -44,5 +45,9 @@ public enum Ancestry {
 
     public Ability getFlaw() {
         return flaw;
+    }
+
+    public String getDisplayName() {
+        return StringUtils.capitalize(name().toLowerCase());
     }
 }

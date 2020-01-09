@@ -30,6 +30,12 @@ public class Character {
         initializeAbilityArray();
     }
 
+    public Character(Character character) {
+        this.ancestry = character.getAncestry();
+        this.background = character.getBackground();
+        this.pfClass = character.getPfClass();
+    }
+
     public void initializeAbilityArray() {
         abilityArray = new HashMap<>(Map.of(Ability.STR, BASE_ABILITY_SCORE,
                 Ability.DEX, BASE_ABILITY_SCORE,

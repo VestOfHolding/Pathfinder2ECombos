@@ -1,4 +1,5 @@
 import com.google.common.collect.Sets;
+import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,8 +7,10 @@ import java.util.Set;
 public class CharacterIterator {
     private static Set<Set<Ability>> fourFreeBoostCombos = Sets.combinations(Ability.getAbilities(), 4);
 
-    public Character character;
+    @Getter
+    private Character character;
 
+    @Getter
     private Set<String> possibleArrays = new HashSet<>();
 
     public CharacterIterator(Ancestry ancestry, Background background, PFClass pfClass) {
@@ -70,13 +73,5 @@ public class CharacterIterator {
                 character.lowerAbility(ability);
             }
         }
-    }
-
-    public void printCharacterCombos() {
-        String output = String.join("\t", character.getAncestry().name(),
-                character.getBackground().name(),
-                character.getPfClass().getDisplayName(),
-                Integer.toString(countPossibleAbilityArrays()));
-        System.out.println(output);
     }
 }
