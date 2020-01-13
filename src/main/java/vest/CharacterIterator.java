@@ -2,6 +2,7 @@ package vest;
 
 import com.google.common.collect.Sets;
 import lombok.Getter;
+import org.apache.commons.math3.util.Precision;
 import vest.ancestry.Ancestry;
 import vest.ancestry.Heritage;
 import vest.pfclass.PFClass;
@@ -16,14 +17,15 @@ import java.util.Set;
 public class CharacterIterator {
     private static Set<Set<Ability>> fourFreeBoostCombos = Sets.combinations(Ability.getAbilities(), 4);
 
-    private static DecimalFormat decimalFormat = new DecimalFormat("###.##");
-
     @Getter
     private Character character;
 
     @Getter
     private Set<String> possibleArrays = new HashSet<>();
+    @Getter
     private List<String> allPossibleArrays = new ArrayList<>();
+    @Getter
+    private double percentDupes;
 
     public CharacterIterator(Ancestry ancestry, Background background, PFClass pfClass) {
         this(ancestry, null, background, pfClass, null);
@@ -95,16 +97,17 @@ public class CharacterIterator {
     public void printCharacterCombos() {
         int possibleAbilityArrays = countPossibleAbilityArrays();
         int dupes = allPossibleArrays.size() - possibleArrays.size();
+        percentDupes = Precision.round((double)dupes / (double)allPossibleArrays.size()  * 100.0, 2);
 
-        String output = String.join("\t", character.getAncestry().getDisplayName(),
-                character.getHeritage().getDisplayName(),
-                character.getBackground().getDisplayName(),
-                character.getPfClass().getDisplayName(),
-                character.getSubclass().getDisplayName(),
-                Integer.toString(dupes),
-                decimalFormat.format((double)dupes / (double)allPossibleArrays.size()  * 100.0));
+//        String output = String.join("\t", character.getAncestry().getDisplayName(),
+//                character.getHeritage().getDisplayName(),
+//                character.getBackground().getDisplayName(),
+//                character.getPfClass().getDisplayName(),
+//                character.getSubclass().getDisplayName(),
+//                Integer.toString(dupes),
+//                Double.toString(percentDupes));
         character.setNumPossibleAbilityArrays(possibleAbilityArrays);
 
-        System.out.println(output);
+//        System.out.println(output);
     }
 }
