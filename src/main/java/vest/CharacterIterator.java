@@ -3,7 +3,9 @@ package vest;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import vest.ancestry.Ancestry;
+import vest.ancestry.Heritage;
 import vest.pfclass.PFClass;
+import vest.pfclass.Subclass;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -24,7 +26,11 @@ public class CharacterIterator {
     private List<String> allPossibleArrays = new ArrayList<>();
 
     public CharacterIterator(Ancestry ancestry, Background background, PFClass pfClass) {
-        character = new Character(ancestry, background, pfClass);
+        this(ancestry, null, background, pfClass, null);
+    }
+
+    public CharacterIterator(Ancestry ancestry, Heritage heritage, Background background, PFClass pfClass, Subclass subclass) {
+        character = new Character(ancestry, heritage, background, pfClass, subclass);
     }
 
     public int countPossibleAbilityArrays() {
@@ -91,8 +97,10 @@ public class CharacterIterator {
         int dupes = allPossibleArrays.size() - possibleArrays.size();
 
         String output = String.join("\t", character.getAncestry().getDisplayName(),
+                character.getHeritage().getDisplayName(),
                 character.getBackground().getDisplayName(),
                 character.getPfClass().getDisplayName(),
+                character.getSubclass().getDisplayName(),
                 Integer.toString(dupes),
                 decimalFormat.format((double)dupes / (double)allPossibleArrays.size()  * 100.0));
         character.setNumPossibleAbilityArrays(possibleAbilityArrays);

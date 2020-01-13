@@ -1,7 +1,9 @@
 package vest;
 
 import vest.ancestry.Ancestry;
+import vest.ancestry.Heritage;
 import vest.pfclass.PFClass;
+import vest.pfclass.Subclass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +15,17 @@ public class Main {
 
         List<Character> characters = new ArrayList<>();
 
-        System.out.println(String.join("\t", "Ancestry", "Background", "Class", "Num Dupes", "% Dupes"));
+        System.out.println(String.join("\t", "Ancestry", "Heritage", "Background", "Class", "Subclass", "Num Dupes", "% Dupes"));
         for (Ancestry ancestry : Ancestry.values()) {
-            for (Background background : Background.values()) {
-                for (PFClass pfClass : PFClass.values()) {
-                    iterator = new CharacterIterator(ancestry, background, pfClass);
-                    iterator.printCharacterCombos();
-                    characters.add(iterator.getCharacter());
+            for (Heritage heritage : ancestry.getHeritages()) {
+                for (Background background : Background.values()) {
+                    for (PFClass pfClass : PFClass.values()) {
+                        for (Subclass subclass : pfClass.getSubclasses()) {
+                            iterator = new CharacterIterator(ancestry, heritage, background, pfClass, subclass);
+                            iterator.printCharacterCombos();
+                            characters.add(iterator.getCharacter());
+                        }
+                    }
                 }
             }
         }

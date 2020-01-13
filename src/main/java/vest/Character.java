@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import vest.ancestry.Ancestry;
+import vest.ancestry.Heritage;
 import vest.pfclass.PFClass;
+import vest.pfclass.Subclass;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,17 +22,21 @@ public class Character {
     public static final int BASE_ABILITY_SCORE = 10;
 
     private Ancestry ancestry;
+    private Heritage heritage;
     private Background background;
     private PFClass pfClass;
+    private Subclass subclass;
 
     private Map<Ability, Integer> abilityArray;
     private Ability backgroundBoost;
     private int numPossibleAbilityArrays;
 
-    public Character(Ancestry ancestry, Background background, PFClass pfClass) {
+    public Character(Ancestry ancestry, Heritage heritage, Background background, PFClass pfClass, Subclass subclass) {
         this.ancestry = ancestry;
+        this.heritage = heritage;
         this.background = background;
         this.pfClass = pfClass;
+        this.subclass = subclass;
 
         initializeAbilityArray();
     }

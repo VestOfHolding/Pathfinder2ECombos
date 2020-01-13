@@ -9,21 +9,23 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static vest.Constants.*;
+
 public enum PFClass {
-    ALCHEMIST(Ability.INT, "Alchemist"),
-    WIZARD(Ability.INT, "Wizard"),
-    BARBARIAN(Ability.STR, "Barbarian"),
-    BARD(Ability.CHA, "Bard"),
-    SORCERER(Ability.CHA, "Sorcerer"),
-    CHAMPION(Ability.STR, Ability.DEX, "Champion"),
-    FIGHT(Ability.STR, Ability.DEX, "Fighter"),
-    MONK(Ability.STR, Ability.DEX, "Monk"),
-    RANGER(Ability.STR, Ability.DEX, "Ranger"),
-    ROGUE_RUFF(Ability.STR, Ability.DEX, "Rogue(Ruffian)"),
-    CLERIC(Ability.WIS, "Cleric"),
-    DRUID(Ability.WIS, "Druid"),
-    ROGUE_THIEF(Ability.DEX, "Rogue(Thief)"),
-    ROGUE_SCOUNDREL(Ability.DEX, Ability.CHA, "Rogue(Scoundrel)");
+    ALCHEMIST(Ability.INT, ALCHEMIST_NAME),
+    WIZARD(Ability.INT, WIZARD_NAME),
+    BARBARIAN(Ability.STR, BARBARIAN_NAME),
+    BARD(Ability.CHA, BARD_NAME),
+    SORCERER(Ability.CHA, SORCERER_NAME ),
+    CHAMPION(Ability.STR, Ability.DEX, CHAMPION_NAME),
+    FIGHT(Ability.STR, Ability.DEX, FIGHTER_NAME),
+    MONK(Ability.STR, Ability.DEX, MONK_NAME ),
+    RANGER(Ability.STR, Ability.DEX, RANGER_NAME ),
+    ROGUE_RUFF(Ability.STR, Ability.DEX, ROGUE_RUFF_NAME),
+    CLERIC(Ability.WIS, CLERIC_NAME),
+    DRUID(Ability.WIS, DRUID_NAME),
+    ROGUE_THIEF(Ability.DEX, ROGUE_THIEF_NAME),
+    ROGUE_SCOUNDREL(Ability.DEX, Ability.CHA, ROGUE_SCOUNDREL_NAME);
 
     private Ability keyAbilityBoost;
     private Ability alternateKeyAbilityBoost;
@@ -41,7 +43,7 @@ public enum PFClass {
         this.keyAbilityBoost = keyAbilityBoost;
         this.alternateKeyAbilityBoost = alternateKeyAbilityBoost;
         this.displayName = displayName;
-        subclasses = Subclass.getSubclassByClass(name());
+        subclasses = Subclass.getSubclassByClass(displayName);
     }
 
     public Set<Ability> getBoosts() {
