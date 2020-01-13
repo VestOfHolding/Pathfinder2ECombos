@@ -1,5 +1,9 @@
+package vest;
+
 import com.google.common.collect.Sets;
 import lombok.Getter;
+import vest.ancestry.Ancestry;
+import vest.pfclass.PFClass;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

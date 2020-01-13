@@ -1,7 +1,10 @@
+package vest;
+
+import vest.ancestry.Ancestry;
+import vest.pfclass.PFClass;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -9,8 +12,8 @@ public class Main {
         CharacterIterator iterator;
 
         List<Character> characters = new ArrayList<>();
-        
-        System.out.println(String.join("\t", "Ancestry", "Background", "Class", "Num Dupes", "% Dupes"));
+
+        System.out.println(String.join("\t", "vest.ancestry.Ancestry", "vest.Background", "Class", "Num Dupes", "% Dupes"));
         for (Ancestry ancestry : Ancestry.values()) {
             for (Background background : Background.values()) {
                 for (PFClass pfClass : PFClass.values()) {
@@ -21,7 +24,7 @@ public class Main {
             }
         }
 
-//        Map<String, List<Character>> grouping = characters.stream()
+//        Map<String, List<vest.Character>> grouping = characters.stream()
 //                .collect(Collectors.groupingBy(c -> c.getAncestry().getDisplayName()
 //                        + "\t" + c.getBackground() .getDisplayName()
 //                        + "\t\t" + c.getNumPossibleAbilityArrays()));

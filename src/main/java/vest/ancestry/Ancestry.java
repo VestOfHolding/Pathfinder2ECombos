@@ -1,5 +1,8 @@
+package vest.ancestry;
+
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import vest.Ability;
 
 import java.util.Objects;
 import java.util.Set;

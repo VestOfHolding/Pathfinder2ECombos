@@ -1,4 +1,7 @@
+package vest.pfclass;
+
 import lombok.AllArgsConstructor;
+import vest.Ability;
 
 import java.util.Objects;
 import java.util.Set;
@@ -7,11 +10,18 @@ import java.util.stream.Stream;
 
 @AllArgsConstructor
 public enum PFClass {
-    ALCHEMIST_WIZARD(Ability.INT, "Alchemist, Wizard"),
+    ALCHEMIST(Ability.INT, "Alchemist"),
+    WIZARD(Ability.INT, "Wizard"),
     BARBARIAN(Ability.STR, "Barbarian"),
-    BARD_SORCERER(Ability.CHA, "Bard, Sorcerer"),
-    CHAMP_FIGHT_MONK_RANGER_ROGUE_RUFF(Ability.STR, Ability.DEX, "Champion, Fighter, Monk, Ranger, Rogue(Ruffian)"),
-    CLERIC_DRUID(Ability.WIS, "Cleric, Druid"),
+    BARD(Ability.CHA, "Bard"),
+    SORCERER(Ability.CHA, "Sorcerer"),
+    CHAMPION(Ability.STR, Ability.DEX, "Champion"),
+    FIGHT(Ability.STR, Ability.DEX, "Fighter"),
+    MONK(Ability.STR, Ability.DEX, "Monk"),
+    RANGER(Ability.STR, Ability.DEX, "Ranger"),
+    ROGUE_RUFF(Ability.STR, Ability.DEX, "Rogue(Ruffian)"),
+    CLERIC(Ability.WIS, "Cleric"),
+    DRUID(Ability.WIS, "Druid"),
     ROGUE_THIEF(Ability.DEX, "Rogue(Thief)"),
     ROGUE_SCOUNDREL(Ability.DEX, Ability.CHA, "Rogue(Scoundrel)");
 

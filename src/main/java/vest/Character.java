@@ -1,7 +1,11 @@
+package vest;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vest.ancestry.Ancestry;
+import vest.pfclass.PFClass;
 
 import java.util.HashMap;
 import java.util.Map;
