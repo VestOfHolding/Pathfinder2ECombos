@@ -29,9 +29,7 @@ public enum Ancestry {
     private List<Heritage> heritages;
 
     Ancestry(Ability boost1, Ability boost2) {
-        this.boost1 = boost1;
-        this.boost2 = boost2;
-        heritages = Heritage.getHeritagesByAncestry(name());
+        this(boost1, boost2, null, null);
     }
 
     Ancestry(Ability boost1, Ability boost2, Ability boost3, Ability flaw) {

@@ -1,14 +1,14 @@
 package vest.pfclass;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import vest.Ability;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@AllArgsConstructor
 public enum PFClass {
     ALCHEMIST(Ability.INT, "Alchemist"),
     WIZARD(Ability.INT, "Wizard"),
@@ -30,10 +30,18 @@ public enum PFClass {
 
     private String displayName;
 
+    @Getter
+    private List<Subclass> subclasses;
+
     PFClass(Ability keyAbilityBoost, String displayName) {
+        this(keyAbilityBoost, null, displayName);
+    }
+
+    PFClass(Ability keyAbilityBoost, Ability alternateKeyAbilityBoost, String displayName) {
         this.keyAbilityBoost = keyAbilityBoost;
-        alternateKeyAbilityBoost = null;
+        this.alternateKeyAbilityBoost = alternateKeyAbilityBoost;
         this.displayName = displayName;
+        subclasses = Subclass.getSubclassByClass(name());
     }
 
     public Set<Ability> getBoosts() {
