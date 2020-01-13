@@ -13,7 +13,7 @@ public class Main {
 
         List<Character> characters = new ArrayList<>();
 
-        System.out.println(String.join("\t", "vest.ancestry.Ancestry", "vest.Background", "Class", "Num Dupes", "% Dupes"));
+        System.out.println(String.join("\t", "Ancestry", "Background", "Class", "Num Dupes", "% Dupes"));
         for (Ancestry ancestry : Ancestry.values()) {
             for (Background background : Background.values()) {
                 for (PFClass pfClass : PFClass.values()) {
