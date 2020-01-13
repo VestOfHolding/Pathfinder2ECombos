@@ -1,17 +1,23 @@
 import com.google.common.collect.Sets;
 import lombok.Getter;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CharacterIterator {
     private static Set<Set<Ability>> fourFreeBoostCombos = Sets.combinations(Ability.getAbilities(), 4);
+
+    private static DecimalFormat decimalFormat = new DecimalFormat("###.##");
 
     @Getter
     private Character character;
 
     @Getter
     private Set<String> possibleArrays = new HashSet<>();
+    private List<String> allPossibleArrays = new ArrayList<>();
 
     public CharacterIterator(Ancestry ancestry, Background background, PFClass pfClass) {
         character = new Character(ancestry, background, pfClass);
@@ -68,6 +74,7 @@ public class CharacterIterator {
 
             //We're finally at the bottom!
             possibleArrays.add(character.toString());
+            allPossibleArrays.add(character.toString());
 
             for (Ability ability : abilitySet) {
                 character.lowerAbility(ability);
@@ -76,10 +83,16 @@ public class CharacterIterator {
     }
 
     public void printCharacterCombos() {
+        int possibleAbilityArrays = countPossibleAbilityArrays();
+        int dupes = allPossibleArrays.size() - possibleArrays.size();
+
         String output = String.join("\t", character.getAncestry().getDisplayName(),
                 character.getBackground().getDisplayName(),
                 character.getPfClass().getDisplayName(),
-                Integer.toString(countPossibleAbilityArrays()));
+                Integer.toString(dupes),
+                decimalFormat.format((double)dupes / (double)allPossibleArrays.size()  * 100.0));
+        character.setNumPossibleAbilityArrays(possibleAbilityArrays);
+
         System.out.println(output);
     }
 }

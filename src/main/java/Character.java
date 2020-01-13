@@ -21,6 +21,7 @@ public class Character {
 
     private Map<Ability, Integer> abilityArray;
     private Ability backgroundBoost;
+    private int numPossibleAbilityArrays;
 
     public Character(Ancestry ancestry, Background background, PFClass pfClass) {
         this.ancestry = ancestry;
@@ -28,12 +29,6 @@ public class Character {
         this.pfClass = pfClass;
 
         initializeAbilityArray();
-    }
-
-    public Character(Character character) {
-        this.ancestry = character.getAncestry();
-        this.background = character.getBackground();
-        this.pfClass = character.getPfClass();
     }
 
     public void initializeAbilityArray() {
