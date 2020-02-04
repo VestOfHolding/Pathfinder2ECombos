@@ -8,7 +8,6 @@ import vest.ancestry.Heritage;
 import vest.pfclass.PFClass;
 import vest.pfclass.Subclass;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -26,6 +25,8 @@ public class CharacterIterator {
     private List<String> allPossibleArrays = new ArrayList<>();
     @Getter
     private double percentDupes;
+    @Getter
+    private List<Double> intVals = new ArrayList<>();
 
     public CharacterIterator(Ancestry ancestry, Background background, PFClass pfClass) {
         this(ancestry, null, background, pfClass, null);
@@ -85,6 +86,7 @@ public class CharacterIterator {
             }
 
             //We're finally at the bottom!
+            intVals.add((double) character.getAbilityArray().get(Ability.INT));
             possibleArrays.add(character.toString());
             allPossibleArrays.add(character.toString());
 
@@ -97,17 +99,8 @@ public class CharacterIterator {
     public void printCharacterCombos() {
         int possibleAbilityArrays = countPossibleAbilityArrays();
         int dupes = allPossibleArrays.size() - possibleArrays.size();
-        percentDupes = Precision.round((double)dupes / (double)allPossibleArrays.size()  * 100.0, 2);
+        percentDupes = Precision.round((double)dupes / (double)allPossibleArrays.size()  * 100.0, 6);
 
-//        String output = String.join("\t", character.getAncestry().getDisplayName(),
-//                character.getHeritage().getDisplayName(),
-//                character.getBackground().getDisplayName(),
-//                character.getPfClass().getDisplayName(),
-//                character.getSubclass().getDisplayName(),
-//                Integer.toString(dupes),
-//                Double.toString(percentDupes));
         character.setNumPossibleAbilityArrays(possibleAbilityArrays);
-
-//        System.out.println(output);
     }
 }
