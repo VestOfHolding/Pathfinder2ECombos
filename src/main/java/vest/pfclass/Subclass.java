@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static vest.Constants.*;
-import static vest.pfclass.PFClass.*;
 
 public enum Subclass {
     BOMBER(ALCHEMIST_NAME),

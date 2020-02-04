@@ -16,8 +16,8 @@ public enum Ancestry {
     ELF(Ability.DEX, Ability.INT, Ability.FREE, Ability.CON, ELF_NAME),
     GNOME(Ability.CON, Ability.CHA, Ability.FREE, Ability.STR, GNOME_NAME),
     GOBLIN(Ability.DEX, Ability.CHA, Ability.FREE, Ability.WIS, GOBLIN_NAME),
-    HALFLING(Ability.DEX, Ability.WIS, Ability.FREE, Ability.STR, HALFLING_NAME);
-//    HUMAN(Ability.FREE, Ability.FREE, HUMAN_NAME);
+    HALFLING(Ability.DEX, Ability.WIS, Ability.FREE, Ability.STR, HALFLING_NAME),
+    HUMAN(Ability.FREE, Ability.FREE, HUMAN_NAME);
 
     private Ability boost1;
     private Ability boost2;
