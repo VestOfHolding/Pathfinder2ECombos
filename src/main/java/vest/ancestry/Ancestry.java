@@ -17,20 +17,29 @@ public enum Ancestry {
     GNOME(Ability.CON, Ability.CHA, Ability.FREE, Ability.STR, GNOME_NAME),
     GOBLIN(Ability.DEX, Ability.CHA, Ability.FREE, Ability.WIS, GOBLIN_NAME),
     HALFLING(Ability.DEX, Ability.WIS, Ability.FREE, Ability.STR, HALFLING_NAME),
+    HOBGOBLIN(Ability.CON, Ability.INT, Ability.FREE, Ability.WIS, HOBGOBLIN_NAME),
+    LESHY(Ability.CON, Ability.WIS, Ability.FREE, Ability.INT, LESHY_NAME),
+    LIZARDFOLK(Ability.STR, Ability.WIS, Ability.FREE, Ability.INT, LIZARDFOLK_NAME),
+    SHOONY(Ability.DEX, Ability.CHA, Ability.FREE, Ability.CON, HALFLING_NAME),
+    CATFOLK(Ability.DEX, Ability.CHA, Ability.FREE, Ability.WIS, CATFOLK_NAME),
+    KOBOLD(Ability.DEX, Ability.CHA, Ability.FREE, Ability.CON, KOBOLD_NAME),
+    ORC(Ability.STR, Ability.FREE, ORC_NAME),
+    RATFOLK(Ability.DEX, Ability.INT, Ability.FREE, Ability.STR, RATFOLK_NAME),
+    TENGU(Ability.DEX, Ability.FREE, TENGU_NAME),
     HUMAN(Ability.FREE, Ability.FREE, HUMAN_NAME);
 
-    private Ability boost1;
-    private Ability boost2;
-    private Ability boost3;
+    private final Ability boost1;
+    private final Ability boost2;
+    private final Ability boost3;
 
     @Getter
-    private Ability flaw;
+    private final Ability flaw;
 
     @Getter
-    private String displayName;
+    private final String displayName;
 
     @Getter
-    private List<Heritage> heritages;
+    private final List<Heritage> heritages;
 
     Ancestry(Ability boost1, Ability boost2, String displayName) {
         this(boost1, boost2, null, null, displayName);
